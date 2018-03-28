@@ -33,8 +33,6 @@ public class CoGrOOController {
 	@RequestMapping(value="/analyze", method=RequestMethod.GET)
 	public String analyze(@RequestParam(value="texto",required=true) String documentText)
 	{
-			
-			
 			Document document = new DocumentImpl();
 			document.setText(documentText);
 			
