@@ -1,7 +1,9 @@
 package com.ventorim.api;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import org.cogroo.analyzer.Analyzer;
 import org.cogroo.analyzer.ComponentFactory;
@@ -69,6 +71,9 @@ public class CoGrOOController {
 	/** A utility method that prints the analyzed document to the std output. */
 	  private String print(Document document) {
 	    StringBuilder output = new StringBuilder();
+	    String searchKeyword = "";
+	    List possibleSearchKeywords = new ArrayList<>();
+	    String lastTag = "";
 	
 	    // and now we navigate the document to print its data
 	    for (Sentence sentence : document.getSentences()) {
@@ -103,16 +108,31 @@ public class CoGrOOController {
 	      // we can also print the shallow parsing results!
 	      output.append("  Shallow Structure: ");
 	      for (SyntacticChunk structure : sentence.getSyntacticChunks()) {
-	        output.append("[").append(structure.getTag()).append(": ");
-	        for (Token innerToken : structure.getTokens()) {
-	          output.append(innerToken.getLexeme()).append(" ");
-	        }
-	        output.append("] ");
+//	    	  searchKeyword = "";
+	    		
+    		  output.append("[").append(structure.getTag()).append(": ");
+    		  
+		        for (Token innerToken : structure.getTokens())
+		        {
+		          output.append(innerToken.getLexeme()).append(" ");
+		          if(structure.getTag().equals("ACC") || (structure.getTag().contains("P") && lastTag.equals("ACC")))
+			      {
+		        	  searchKeyword += innerToken.getLexeme()+" ";
+			      }
+		        }
+//		        if(!searchKeyword.trim().equals(""))
+//		        {
+//		        	possibleSearchKeywords.add(searchKeyword);
+//		        }
+		       lastTag = structure.getTag();
+		        output.append("] ");
 	      }
 	      output.append("\n<br>\n");
 	    }
-	
-	    System.out.println(output.toString());
+	    System.out.println(searchKeyword);
+	    
+	    output.append("Possible search keywords: "+searchKeyword);
+//	    output.append("Possible search keywords: "+possibleSearchKeywords.toString());
 	    return output.toString();
 	    
 	  }
