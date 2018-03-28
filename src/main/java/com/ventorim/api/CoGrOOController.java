@@ -1,26 +1,18 @@
 package com.ventorim.api;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
+
 import org.cogroo.analyzer.Analyzer;
 import org.cogroo.analyzer.ComponentFactory;
 import org.cogroo.checker.CheckDocument;
 import org.cogroo.checker.GrammarChecker;
-import org.cogroo.text.Chunk;
 import org.cogroo.text.Document;
-import org.cogroo.text.Sentence;
-import org.cogroo.text.SyntacticChunk;
-import org.cogroo.text.Token;
 import org.cogroo.text.impl.DocumentImpl;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
