@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /* TUTORIAL:
  * 	http://ccsl.ime.usp.br/redmine/projects/cogroo/wiki/API_CoGrOO_4x
+ *  https://github.com/cogroo/cogroo4/wiki/API-CoGrOO-4
  * */
 
 @RestController
